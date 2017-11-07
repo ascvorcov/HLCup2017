@@ -5,8 +5,13 @@ solutions (with custom routing, json serialization and parsing).
 All testing performed in virtualized environment with following parameters:
 Intel Xeon (4 cores 2 GHz), 4GB RAM, 10GB HDD.
 
+The result was 182nd place, with score of 63485 seconds (the lower the better - total number of seconds spent to process queries),
+1st place solution using C with sockets, 121 second. Apparently, slowest parts are built-in routing and
+json serialization. Replacing with custom implementation gives boost up to 1296 seconds (145th place, [Alex K](https://goo.gl/UDgiz1)),
+or even 264 seconds (83rd place, [seralexeev](https://goo.gl/2x91xq)).
+
 ## Phase one
-contains only GET queries based on known preloaded data.
+Contains only GET queries based on known preloaded data.
 Linear growth testing profile with 1-200 RPS.
 Time to complete request
 * Min = 0.327 msec
