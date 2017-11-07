@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 [Produces("application/json")]
 public class LocationController : Controller
 {
-    private Storage storage = Storage.Instance; //todo:inject
+    private Storage storage = Storage.Instance;
 
     [HttpPost("/locations/new")]
     public IActionResult CreateLocation([FromBody] LocationModel location)

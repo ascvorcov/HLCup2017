@@ -27,31 +27,22 @@ public class LocationModel
 
   public void UpdateFrom(LocationModel other)
   {
-    //lock (this)
-    {
-      this.place = other.place == Const.Empty ? this.place : other.place;
-      this.country = other.country == Const.Empty ? this.country : other.country;
-      this.city = other.city == Const.Empty ? this.city : other.city;
-      this.distance = other.distance == uint.MaxValue ? this.distance : other.distance;
-    }
+    this.place = other.place == Const.Empty ? this.place : other.place;
+    this.country = other.country == Const.Empty ? this.country : other.country;
+    this.city = other.city == Const.Empty ? this.city : other.city;
+    this.distance = other.distance == uint.MaxValue ? this.distance : other.distance;
   }
 
   public void AddVisit(VisitModel visit)
   {
-    //lock (this)
-    {
-      if (this.visits == null) this.visits = new List<VisitModel>();
-      this.visits.Add(visit);
-    }
+    if (this.visits == null) this.visits = new List<VisitModel>();
+    this.visits.Add(visit);
   }
 
   public void RemoveVisit(VisitModel visit)
   {
     if (this.visits == null) return;
-    //lock (this)
-    {
-      this.visits.Remove(visit);
-    }
+    this.visits.Remove(visit);
   }
 
   public decimal GetScore(
@@ -62,14 +53,11 @@ public class LocationModel
     uint? toAge, 
     char? gender)
   {
-    //lock (this)
-    {
-      return this
-       .Filter(storage, fromDate, toDate, fromAge, toAge, gender)
-       .Select(x => (decimal)x.mark.Value)
-       .DefaultIfEmpty(0)
-       .Average();
-    }
+    return this
+     .Filter(storage, fromDate, toDate, fromAge, toAge, gender)
+     .Select(x => (decimal)x.mark.Value)
+     .DefaultIfEmpty(0)
+     .Average();
   }
 
   private IEnumerable<VisitModel> Filter(

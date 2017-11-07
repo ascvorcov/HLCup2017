@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 [Produces("application/json")]
 public class VisitsController : Controller
 {
-    private Storage storage = Storage.Instance; //todo:inject
+    private Storage storage = Storage.Instance;
 
     [HttpPost("/visits/new")]
     public IActionResult CreateVisit([FromBody] VisitModel visit)

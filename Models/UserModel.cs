@@ -30,32 +30,23 @@ public class UserModel
 
   public void UpdateFrom(UserModel other)
   {
-    //lock (this)
-    {
-      this.email = other.email == Const.Empty ? this.email : other.email;
-      this.first_name = other.first_name == Const.Empty ? this.first_name : other.first_name;
-      this.last_name = other.last_name == Const.Empty ? this.last_name : other.last_name;
-      this.gender = other.gender == Const.Empty[0] ? this.gender : other.gender;
-      this.birth_date = other.birth_date == int.MaxValue ? this.birth_date : other.birth_date;
-    }
+    this.email = other.email == Const.Empty ? this.email : other.email;
+    this.first_name = other.first_name == Const.Empty ? this.first_name : other.first_name;
+    this.last_name = other.last_name == Const.Empty ? this.last_name : other.last_name;
+    this.gender = other.gender == Const.Empty[0] ? this.gender : other.gender;
+    this.birth_date = other.birth_date == int.MaxValue ? this.birth_date : other.birth_date;
   }
 
   public void AddVisit(VisitModel visit)
   {
-    //lock (this)
-    {
-      if (this.visits == null) this.visits = new List<VisitModel>();
-      this.visits.Add(visit);
-    }
+    if (this.visits == null) this.visits = new List<VisitModel>();
+    this.visits.Add(visit);
   }
 
   public void RemoveVisit(VisitModel visit)
   {
     if (this.visits == null) return;
-    //lock (this)
-    {
-      this.visits.Remove(visit);
-    }
+    this.visits.Remove(visit);
   }
   
   public List<VisitModelClient> GetVisits(
@@ -66,13 +57,10 @@ public class UserModel
     string country)
   {
     if (this.visits == null) return new List<VisitModelClient>();
-    //lock (this)
-    {
-      return this
-       .Filter(storage, fromDate, toDate, distance, country)
-       .OrderBy(x => x.visited_at)
-       .ToList();
-    }
+    return this
+     .Filter(storage, fromDate, toDate, distance, country)
+     .OrderBy(x => x.visited_at)
+     .ToList();
   }
 
   private IEnumerable<VisitModelClient> Filter(

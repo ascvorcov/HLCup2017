@@ -8,7 +8,7 @@ using Microsoft.Extensions.Primitives;
 [Produces("application/json")]
 public class UsersController : Controller
 {
-    private Storage storage = Storage.Instance; //todo:inject
+    private Storage storage = Storage.Instance;
 
     [HttpPost("/users/new")]
     public IActionResult CreateUser([FromBody] UserModel user)
