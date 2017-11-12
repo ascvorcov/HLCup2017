@@ -13,7 +13,8 @@ or even 264 seconds (83rd place, [seralexeev](https://goo.gl/2x91xq)).
 ## Phase one
 Contains only GET queries based on known preloaded data.
 Linear growth testing profile with 1-200 RPS.
-Time to complete request
+
+Time to complete request:
 * Min = 0.327 msec
 * Max = 64.151 msec
 * Avg = 3.658 msec
@@ -22,8 +23,9 @@ Time to complete request
 
 ## Phase two
 Contains only POST queries, updating existing data.
-Constant testing profile with 100 RPS
-Time to complete request
+Constant testing profile with 100 RPS.
+
+Time to complete request:
 * Min = 0.656 msec
 * Max = 48.92 msec
 * Avg = 3.928 msec
@@ -32,8 +34,9 @@ Time to complete request
 
 ## Phase three
 Contains only GET queries, verifying updated data.
-Linear growth testing profile with 200-2000 RPS
-Time to complete request
+Linear growth testing profile with 200-2000 RPS.
+
+Time to complete request:
 * Min = 0.257 msec
 * Max = 486.988 msec
 * Avg = 62.749 msec
